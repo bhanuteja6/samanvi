@@ -1,0 +1,29 @@
+<h1>Listing profiles</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Place</th>
+    <th>Dob</th>
+    <th>Photo</th>
+    <th>Aboutme</th>
+	<th>Aboutyou</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @profiles.each do |profile| %>
+  <tr>
+    <td><%= profile.name %></td>
+    <td><%= profile.email %></td>
+    <td><%= profile.place %></td>
+    <td><%= profile.dob %></td>
+    <td><%= profile.photo %></td>
+    <td><%= profile.aboutme %></td>
+	<td><%= profile.aboutyou %></td>
+    
+  </tr>
+<% end %>
+</table>
+

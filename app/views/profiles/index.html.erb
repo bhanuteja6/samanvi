@@ -1,0 +1,44 @@
+<h1>Listing profiles</h1>
+
+<%= paginate @profiles %>
+
+<table>
+
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Place</th>
+    <th>Dob</th>
+    <th>Photo</th>
+    <th>Aboutme</th>
+	<th>Aboutyou</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @profiles.each do |profile| %>
+  <tr>
+    <td><%= profile.name %></td>
+    <td><%= profile.email %></td>
+    <td><%= profile.place %></td>
+    <td><%= profile.dob %></td>
+    <td><%= link_to image_tag(profile.photo), download_file_profile_path(profile) %></td>
+    <td><%= profile.aboutme %></td>
+	<td><%= profile.aboutyou %></td>
+    <td><%= link_to 'Show', profile %></td>
+    <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+    <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Profile', new_profile_path %>
+
+<p>
+  Download In :
+ 
+  <%= link_to "Excel", profiles_path(format: "xls") %>
+</p>

@@ -1,0 +1,69 @@
+<%= javascript_include_tag('jquery.min', 'jquery.datepick')%>
+<%= stylesheet_link_tag('jquery.datepick')%>
+
+<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
+
+<%= form_for(@profile) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :place %><br />
+    <%= f.text_field :place %>
+  </div>
+  <div class="field">
+    <%= f.label :dob %><br />
+    <%= f.text_field :dob, :id => :popupDatepicker %>
+  </div>
+  <div class="field">
+    <%= f.label :photo %><br />
+    <%= f.file_field :photo %>
+  </div>
+  <div class="field">
+    <%= f.label :aboutme %><br />
+    <%= f.text_field :aboutme %>
+  </div>
+  <div class="field">
+    <%= f.label :aboutyou %><br />
+    <%= f.text_area :aboutyou, :cols=>"50", :rows=>"15" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+ <script>
+$(function() {
+    $('#popupDatepicker').datepick({dateFormat: 'mm-dd-yyyy'});
+       
+});
+</script>
+
+<script type="text/javascript">
+       bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+</script>
+
+<script>
+$(document).ready(function() 
+    { 
+        $("#myTable").tablesorter( {sortList: [[0,0], [1,0]]} ); 
+    } 
+);  
+</script>
